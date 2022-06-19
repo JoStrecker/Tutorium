@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:autofillHints="AUTOFILL_HINT_NAME"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
@@ -35,12 +36,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:autofillHints="AUTOFILL_HINT_NAME"
         android:ems="10"
         android:hint="@string/surname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextNumberSigned"
@@ -53,5 +56,7 @@
         android:inputType="numberSigned"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 </androidx.constraintlayout.widget.ConstraintLayout>
