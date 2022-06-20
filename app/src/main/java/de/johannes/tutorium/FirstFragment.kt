@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import de.johannes.tutorium.databinding.FragmentFirstBinding
 import de.johannes.tutorium.StudentReaderContract.StudentReaderDbHelper
 import de.johannes.tutorium.StudentReaderContract.StudentEntry
@@ -28,6 +29,9 @@ class FirstFragment : Fragment() {
     ): View? {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         binding.studentList.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, getData())
+        binding.studentList.setOnItemClickListener { adapterView, _, i, _ ->
+            Toast.makeText(context, "${adapterView.adapter.getItem(i)}", Toast.LENGTH_SHORT).show()
+        }
         return binding.root
     }
 
