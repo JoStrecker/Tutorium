@@ -28,6 +28,9 @@ class SecondFragment : Fragment() {
         binding.saveBtn.setOnClickListener {
             addStudent()
         }
+        binding.editTextNumberSigned.setOnClickListener {
+            addStudent()
+        }
         return binding.root
     }
 
@@ -36,7 +39,7 @@ class SecondFragment : Fragment() {
         _binding = null
     }
 
-    fun addStudent(){
+    private fun addStudent(){
         val dbHelper = StudentReaderContract.StudentReaderDbHelper(requireContext())
 
         val name = binding.editTextTextPersonName.text.toString()
@@ -54,12 +57,16 @@ class SecondFragment : Fragment() {
         }
 
         // Insert the new row, returning the primary key value of the new row
-        val newRowId = db?.insert(StudentReaderContract.StudentEntry.TABLE_NAME, null, values)
+        val rowId = db?.insert(StudentReaderContract.StudentEntry.TABLE_NAME, null, values)
 
-        binding.editTextTextPersonName.text.clear()
-        binding.editTextTextPersonName2.text.clear()
-        binding.editTextNumberSigned.text.clear()
+        if((rowId ?: -1) > -1){
+            binding.editTextTextPersonName.text.clear()
+            binding.editTextTextPersonName2.text.clear()
+            binding.editTextNumberSigned.text.clear()
 
-        Toast.makeText(context, "Student added succesfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Student added successfully!", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(context, "There occurred an error trying to add this student!", Toast.LENGTH_LONG).show()
+        }
     }
 }
