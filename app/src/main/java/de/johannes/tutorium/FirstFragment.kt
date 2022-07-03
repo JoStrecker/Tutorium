@@ -1,6 +1,7 @@
 package de.johannes.tutorium
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.provider.BaseColumns
 import androidx.fragment.app.Fragment
@@ -8,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.fragment.findNavController
 import de.johannes.tutorium.databinding.FragmentFirstBinding
 import de.johannes.tutorium.StudentReaderContract.StudentReaderDbHelper
@@ -39,8 +42,12 @@ class FirstFragment : Fragment() {
             Toast.makeText(context, "${adapterView.adapter.getItem(i)}", Toast.LENGTH_SHORT).show()
         }
 
-        binding.floatingActionButton.setOnClickListener { view ->
+        binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
+        binding.floatingActionButton2.setOnClickListener {
+            sendNotification2()
         }
 
         return binding.root
@@ -97,6 +104,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun removeStudent(id: Int){
+        val text = getDataMap()[id] ?: ""
+
         val db = StudentReaderDbHelper(requireContext()).writableDatabase
 
         val where = "_id = ?"
@@ -110,11 +119,37 @@ class FirstFragment : Fragment() {
 
         if((rows ?: 0) > 0){
             binding.studentList.adapter = StudentAdapter(requireContext(), getDataMap())
-            Toast.makeText(context, "Student removed succesfully!", Toast.LENGTH_SHORT).show()
+            sendNotification(text)
         }else{
             Toast.makeText(context, "There occurred an error trying to remove this student!", Toast.LENGTH_LONG).show()
         }
 
         db?.close()
+    }
+
+    private fun sendNotification(text: String){
+        var builder = NotificationCompat.Builder(requireContext(), getString(R.string.channel_id))
+            .setSmallIcon(R.drawable.ic_baseline_emoji_people_24)
+            .setContentTitle("Student deleted")
+            .setContentText(text)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(requireContext())){
+            notify(kotlin.random.Random(12).nextInt(), builder.build())
+        }
+    }
+
+    private fun sendNotification2(){
+        val sharedPref = activity?.getSharedPreferences("name", Context.MODE_PRIVATE)
+
+        var builder = NotificationCompat.Builder(requireContext(), getString(R.string.channel_id))
+            .setSmallIcon(R.drawable.ic_baseline_emoji_people_24)
+            .setContentTitle("Notification")
+            .setContentText(sharedPref?.getString("nameKey", "") ?: "")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(requireContext())){
+            notify(kotlin.random.Random(12).nextInt(), builder.build())
+        }
     }
 }
