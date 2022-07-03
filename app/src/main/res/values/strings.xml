@@ -12,4 +12,5 @@
     <string name="name">name</string>
     <string name="surname">surname</string>
     <string name="semester">semester</string>
+    <string name="add">add</string>
 </resources>
