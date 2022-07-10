@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Tutorium</string>
-    <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Student List</string>
-    <string name="second_fragment_label">New Student</string>
+    <string name="first_fragment_label">Song List</string>
+    <string name="second_fragment_label">New Song</string>
     <string name="next">Next</string>
     <string name="save">save</string>
 
@@ -13,10 +12,21 @@
     <string name="surname">surname</string>
     <string name="semester">semester</string>
     <string name="add">add</string>
-    <string name="channel_name">Student_Notification_Channel</string>
-    <string name="channel_description">Student Notification Channel</string>
-    <string name="channel_id">StudentNotificationChannelID</string>
+    <string name="channel_name" translatable="false">Student_Notification_Channel</string>
+    <string name="channel_description" translatable="false">Student Notification Channel</string>
+    <string name="channel_id" translatable="false">StudentNotificationChannelID</string>
     <string name="settings">Settings</string>
     <string name="third_fragment_label">Settings</string>
     <string name="notification">notification</string>
+    <string name="title">title</string>
+    <string name="artist">artist</string>
+    <string name="action_settings">Settings</string>
+    <string name="delete_song_alert">Do you really want to delete this song?</string>
+    <string name="delete_song_fail">There occurred an error trying to remove this song!</string>
+    <string name="delte_song_success">Song deleted</string>
+    <string name="enter_title">Please enter a song title!</string>
+    <string name="enter_artist">Please enter an artist name!</string>
+    <string name="add_song_success">Song added successfully!</string>
+    <string name="add_song_fail">There occurred an error trying to add this song!</string>
+    <string name="delete_song_success_notification">%1$s by %2$s successfully removed</string>
 </resources>

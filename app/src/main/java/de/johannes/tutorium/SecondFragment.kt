@@ -26,10 +26,10 @@ class SecondFragment : Fragment() {
     ): View {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         binding.saveBtn.setOnClickListener {
-            addStudent()
+            addSong()
         }
-        binding.editTextNumberSigned.setOnClickListener {
-            addStudent()
+        binding.editArtist.setOnClickListener {
+            addSong()
         }
         return binding.root
     }
@@ -39,7 +39,39 @@ class SecondFragment : Fragment() {
         _binding = null
     }
 
-    private fun addStudent(){
+    private fun addSong(){
+        val title = binding.editTitle.text.toString().trim()
+        val artist = binding.editArtist.text.toString().trim()
+
+        if(title.isNullOrEmpty() || title.isBlank()){
+            Toast.makeText(context, getString(R.string.enter_title), Toast.LENGTH_LONG).show()
+            return
+        }
+        if(artist.isNullOrEmpty() || artist.isBlank()){
+            Toast.makeText(context, getString(R.string.enter_artist), Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val db = MusicReaderContract.MusicReaderDbHelper(requireContext()).writableDatabase
+
+        val values = ContentValues().apply {
+            put(MusicReaderContract.MusicEntry.COLUMN_NAME_TITLE, title)
+            put(MusicReaderContract.MusicEntry.COLUMN_NAME_ARTIST, artist)
+        }
+
+        val rowId = db.insert(MusicReaderContract.MusicEntry.TABLE_NAME, null, values)
+
+        if(rowId > -1){
+            binding.editArtist.text.clear()
+            binding.editTitle.text.clear()
+
+            Toast.makeText(context, getString(R.string.add_song_success), Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(context, getString(R.string.add_song_fail), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    /*private fun addStudent(){
         val dbHelper = StudentReaderContract.StudentReaderDbHelper(requireContext())
 
         val name = binding.editTextTextPersonName.text.toString()
@@ -68,5 +100,5 @@ class SecondFragment : Fragment() {
         }else{
             Toast.makeText(context, "There occurred an error trying to add this student!", Toast.LENGTH_LONG).show()
         }
-    }
+    }*/
 }

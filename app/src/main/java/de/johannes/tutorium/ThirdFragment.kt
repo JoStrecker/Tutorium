@@ -25,9 +25,9 @@ class ThirdFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
-        binding.editTextTextPersonName.setText(getName())
+        binding.editTitle.setText(getName())
         binding.saveBtn.setOnClickListener {
-            saveName(binding.editTextTextPersonName.text.toString())
+            saveName(binding.editTitle.text.toString())
         }
         return binding.root
     }

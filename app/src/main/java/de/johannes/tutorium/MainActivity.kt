@@ -10,7 +10,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
+import androidx.core.view.get
 import de.johannes.tutorium.databinding.ActivityMainBinding
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,8 +37,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
-        menu.findItem(R.id.settings).setOnMenuItemClickListener {_ ->
-            findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_ThirdFragment)
+        menu.findItem(R.id.settings).setOnMenuItemClickListener {
+            try {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_ThirdFragment)
+            } catch (e: Exception){
+
+            }
+            try {
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_SecondFragment_to_ThirdFragment)
+            } catch (e: Exception){
+
+            }
             true
         }
         return true

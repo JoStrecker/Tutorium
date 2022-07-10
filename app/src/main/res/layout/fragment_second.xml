@@ -7,48 +7,33 @@
     tools:context=".SecondFragment">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:autofillHints="AUTOFILL_HINT_NAME"
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="@string/title"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/editArtist"
+        android:layout_width="205dp"
+        android:layout_height="53dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:autofillHints="AUTOFILL_HINT_NAME"
         android:ems="10"
-        android:hint="@string/surname"
+        android:hint="@string/artist"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/editTitle"
         tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/editTextNumberSigned"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/semester"
-        android:inputType="numberSigned"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        tools:ignore="TextContrastCheck"
-        android:importantForAutofill="no" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/saveBtn"

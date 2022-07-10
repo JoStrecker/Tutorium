@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tutorium</string>
+    <string name="first_fragment_label">Lied Liste</string>
+    <string name="second_fragment_label">Neues Lied</string>
+    <string name="next">nächstes</string>
+    <string name="save">speichern</string>
+    <string name="hello_first_fragment">Hallo</string>
+    <string name="hello_second_fragment">Hallo</string>
+    <string name="name">Name</string>
+    <string name="surname">Nachname</string>
+    <string name="semester">Semester</string>
+    <string name="add">hinzufügen</string>
+    <string name="settings">Einstellungen</string>
+    <string name="third_fragment_label">Einstellungen</string>
+    <string name="notification">Nachricht</string>
+    <string name="title">Titel</string>
+    <string name="artist">Künstler</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="delete_song_alert">Willst du dieses Lied wirklich löschen?</string>
+    <string name="delete_song_fail">Dieses Lied konnte nicht gelöscht werden!</string>
+    <string name="delte_song_success">Lied erfolgreich gelöscht</string>
+    <string name="enter_title">Bitte einen Titel eingeben!</string>
+    <string name="enter_artist">Bitte einen Künstler eingeben!</string>
+    <string name="add_song_success">Lied erfolgreich hinzugefügt!</string>
+    <string name="add_song_fail">Dieses Lied konnte nicht hinzugefügt werden!</string>
+    <string name="delete_song_success_notification">%1$s von %2$s erfolgreich gelöscht</string>
+</resources>
